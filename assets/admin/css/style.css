@@ -1,0 +1,90 @@
+/*
+* @Author 		Pluginbazar
+* Copyright: 	2015 Pluginbazar
+*/
+
+.wav-notice {
+    padding: 12px 10px;
+    border-radius: 3px;
+    border: 1px solid #c3c3c3;
+}
+
+.wav-notice a,
+.wav-notice a:focus,
+.wav-notice a:visited,
+.wav-notice a:active {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 3px 8px;
+    text-decoration: none;
+    font-size: 12px;
+    color: inherit;
+    border-color: inherit;
+    outline: none;
+}
+
+.wav-notice.wav-notice-warning {
+    background: #ffc1072e;
+    border-color: #ffc1072e;
+}
+
+.wav-notice.wav-notice-info {
+    background: #03a9f42e;
+    border-color: #03a9f42e;
+}
+
+
+.wp-picker-container {
+    display: inline-block;
+    vertical-align: inherit;
+    margin-right: -10px;
+}
+
+
+.wav-col-content .wav-attribute-content {
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.wav-attribute-content.type-colors {
+    width: 28px;
+    height: 28px;
+}
+
+.wav-attribute-content.type-buttons {
+    border: 1px solid #4a4a4a;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+.wav-attribute-content.type-buttons:hover {
+    background: #4a4a4a;
+    border: 1px solid #4a4a4a;
+    color: #fff;
+}
+
+.wav-attribute-content.type-images {
+    width: 40px;
+    height: 40px;
+}
+
+.wav-attribute-content.type-images img{
+    width: 100%;
+}
+
+
+.wc-metaboxes-wrapper .woocommerce_attribute_data .wps-field {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-bottom: 12px;
+}
+
+.wc-metaboxes-wrapper .woocommerce_attribute_data .wps-field > label {
+    font-weight: 600;
+}
+
+
+
+

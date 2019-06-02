@@ -1,0 +1,221 @@
+/*
+* @Author 		Pluginbazar
+* Copyright: 	2015 Pluginbazar
+*/
+
+
+.wav_popup_container {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999;
+    -webkit-user-select: none;
+}
+
+.wav_popup_container .wav_popup_box {
+    background: none repeat scroll 0 0 rgb(255, 255, 255);
+    height: auto;
+    max-height: 80%;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    min-width: 280px;
+    width: 33%;
+    border-radius: 5px;
+    box-shadow: 0 10px 8px rgba(100, 100, 100, 0.9);
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.wav_popup_container .wav_popup_box::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.wav_popup_container .wav_popup_title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #565656;
+    text-align: center;
+    padding: 15px 0;
+    background: #e1e1e1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.wav_popup_container .wav_popup_content .dashicons-spin {
+    font-size: 70px;
+    display: inline-table;
+    text-align: center;
+    width: 100%;
+    margin: 50px 0;
+    color: #00AAE9;
+}
+
+.wav_popup_container .wav_popup_buttons {
+    text-align: center;
+    margin: 5px 0 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.wav_popup_container .wav_popup_section {
+    margin: 8px 5px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.wav_popup_container .wav_popup_section:last-child {
+    border-bottom: none;
+}
+
+.wav_popup_container .wav_popup_section .wav_section_title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 15px;
+    width: 20%;
+    max-width: 100px;
+    display: inline-block;
+}
+
+.wav_popup_container .wav_popup_section .section_content {
+    display: inline-block;
+    width: 60%;
+    vertical-align: middle;
+}
+
+.wav_popup_container .wav_popup_section .section_meta:hover {
+    background: #c1c0c0;
+}
+
+.wav_popup_container .wav_popup_section .section_meta.attribute-selected {
+    background: #484848;
+    color: #eaeaea;
+}
+
+.wav_popup_container .wav_popup_section del {
+    display: inline-block;
+    background: #fbaeae;
+    color: #bf1717;
+    margin: 0px 10px 5px 0;
+    padding: 7px 20px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.wav_popup_container .wav_popup_section ins {
+    display: inline-block;
+    background: #83d4ac;
+    color: #105a36;
+    margin: 0px 10px 5px 0;
+    padding: 7px 20px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.wav_popup_container .wav_popup_payment {
+    background: #e1e1e1;
+    padding: 0px 0px 15px;
+    margin-top: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.wav_popup_container .wav_popup_payment .wav_payment_title {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px 0 5px;
+}
+
+.wav_popup_container .wav_popup_payment .wav_payment_items {
+    width: 100%;
+    text-align: center;
+}
+
+.wav_popup_container .wav_popup_payment .wav_payment_items img.wav_payment_item {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.wav-variation-swatches {
+    margin-bottom: 20px;
+}
+
+.wav-variation-swatches select {
+    display: none !important;
+}
+
+.wav-attribute-content {
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.wav-attribute-content.attribute-selected {
+    border: 3px solid #5e5e5e;
+}
+
+.wav-attribute-content.type-colors,
+.wav-attribute-content.type-images {
+    width: 56px;
+    height: 56px;
+}
+
+.wav-attribute-content.type-buttons {
+    background: #d2d2d2;
+    padding: 8px 12px;
+}
+
+.wav_btn {
+    display: inline-block;
+    font-size: 14px;
+    background: #ddd;
+    padding: 12px 25px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+    text-align: center;
+    min-width: 90px;
+    transition: all 0.3s ease-in-out;
+}
+
+.wav_btn.wav_btn_close {
+    background: #DD4D41;
+    color: #f7f7f7;
+}
+
+.wav_btn.wav_btn_close:hover {
+    background: #b11b0f;
+}
+
+.wav_btn.wav_btn_addtocart {
+    background: #19A25F;
+    color: #f7f7f7;
+}
+
+.wav_btn.wav_btn_addtocart:hover {
+    background: #12693e;
+}
+
+.dashicons.dashicons-spin {
+    animation: dashicons-spin 5s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes dashicons-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
