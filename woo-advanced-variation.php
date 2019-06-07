@@ -60,7 +60,6 @@ class WooCommerceAdvancedVariation {
 
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-pb-settings.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-hook.php' );
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-dynamic-styles.php' );
 	}
 
 

@@ -443,6 +443,9 @@ if ( ! class_exists( 'PB_Settings' ) ) {
                     background: #138E77;
                     cursor: pointer;
                 }
+                input[type=range]:disabled {
+                    background: #fee498;
+                }
             </style>
             <script>
                 jQuery(document).ready(function ($) {

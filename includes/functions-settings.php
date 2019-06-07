@@ -14,7 +14,7 @@ $options = array(
 	'page_settings' => array(
 		'section_popup' => array(
 			'title'       => esc_html__( 'Popup box', WAV_TEXTDOMAIN ),
-			'description' => esc_html__( 'Update settings for Popup box on Shop Page', WAV_TEXTDOMAIN ),
+			'description' => esc_html__( 'Update settings for Popup box on Shop Page. This popup box might be not showing/working if your active theme do not have any Add to cart button in the shop page.', WAV_TEXTDOMAIN ),
 			'options'     => array(
 				array(
 					'id'          => 'wav_popup_box_title',
@@ -81,30 +81,33 @@ $popup_styles = array(
 					'details'     => esc_html__( 'Popup title font size', WAV_TEXTDOMAIN ),
 					'placeholder' => esc_html__( '18', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_popup_title_color',
-					'details' => esc_html__( 'Popup title color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_popup_title_color',
+					'details'  => esc_html__( 'Popup title color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 
 				),
 				array(
-					'id'      => 'wav_popup_title_bg',
-					'details' => esc_html__( 'Popup title background color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_popup_title_bg',
+					'details'  => esc_html__( 'Popup title background color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 
 				),
 				array(
-					'id'      => 'wav_popup_title_fontstyle',
-					'details' => esc_html__( 'Popup title font style', WAV_TEXTDOMAIN ),
-					'type'    => 'select',
-					'args'    => array(
+					'id'       => 'wav_popup_title_fontstyle',
+					'details'  => esc_html__( 'Popup title font style', WAV_TEXTDOMAIN ),
+					'type'     => 'select',
+					'args'     => array(
 						'normal-normal' => esc_html__( 'Normal', WAV_TEXTDOMAIN ),
 						'normal-bold'   => esc_html__( 'Normal - Bold', WAV_TEXTDOMAIN ),
 						'italic-normal' => esc_html__( 'Italic - Normal', WAV_TEXTDOMAIN ),
 						'italic-bold'   => esc_html__( 'Italic - Bold', WAV_TEXTDOMAIN ),
 					),
-
+					'disabled' => true,
 				),
 
 				// Content stying
@@ -114,34 +117,38 @@ $popup_styles = array(
 					'details'     => esc_html__( 'Attribute title font size', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
 					'placeholder' => esc_html__( '16', WAV_TEXTDOMAIN ),
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_attribute_title_color',
-					'details' => esc_html__( 'Attribute title color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_attribute_title_color',
+					'details'  => esc_html__( 'Attribute title color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 				array(
 					'id'          => 'wav_popup_button_fontsize',
 					'details'     => esc_html__( 'Popup button font size', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
 					'placeholder' => esc_html__( '14', WAV_TEXTDOMAIN ),
-
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_popup_button_color',
-					'details' => esc_html__( 'Popup button color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
-
+					'id'       => 'wav_popup_button_color',
+					'details'  => esc_html__( 'Popup button color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 				array(
-					'id'      => 'wav_popup_button_atc_bgcolor',
-					'details' => esc_html__( 'Button `Add to cart` background color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_popup_button_atc_bgcolor',
+					'details'  => esc_html__( 'Button `Add to cart` background color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 				array(
-					'id'      => 'wav_popup_button_cancel_bgcolor',
-					'details' => esc_html__( 'Button `Cancel` background color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_popup_button_cancel_bgcolor',
+					'details'  => esc_html__( 'Button `Cancel` background color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 
 				// Footer Styling
@@ -151,16 +158,19 @@ $popup_styles = array(
 					'details'     => esc_html__( 'Footer text font size', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
 					'placeholder' => esc_html__( '14', WAV_TEXTDOMAIN ),
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_popup_footer_color',
-					'details' => esc_html__( 'Footer text color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_popup_footer_color',
+					'details'  => esc_html__( 'Footer text color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 				array(
-					'id'      => 'wav_popup_footer_bg_color',
-					'details' => esc_html__( 'Footer background color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_popup_footer_bg_color',
+					'details'  => esc_html__( 'Footer background color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 			)
 		),
@@ -186,17 +196,20 @@ $attribute_styles = array(
 					'type'        => 'range',
 					'min'         => 0,
 					'max'         => 10,
+					'disabled'    => true,
 				),
 				array(
 					'id'          => 'wav_attr_colors_border_radius',
 					'details'     => esc_html__( 'Border Radius. Note: For % put minus sign (-) before the value. Example: -50', WAV_TEXTDOMAIN ),
 					'placeholder' => esc_html__( '5', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_attr_colors_border_color',
-					'details' => esc_html__( 'Border Color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_attr_colors_border_color',
+					'details'  => esc_html__( 'Border Color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 
 				// Type - Images
@@ -208,17 +221,20 @@ $attribute_styles = array(
 					'type'        => 'range',
 					'min'         => 0,
 					'max'         => 10,
+					'disabled'    => true,
 				),
 				array(
 					'id'          => 'wav_attr_images_border_radius',
 					'details'     => esc_html__( 'Border Radius. Note: For % put minus sign (-) before the value. Example: -50', WAV_TEXTDOMAIN ),
 					'placeholder' => esc_html__( '5', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_attr_images_border_color',
-					'details' => esc_html__( 'Border Color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_attr_images_border_color',
+					'details'  => esc_html__( 'Border Color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 
 				// Type - Buttons
@@ -230,17 +246,20 @@ $attribute_styles = array(
 					'type'        => 'range',
 					'min'         => 0,
 					'max'         => 10,
+					'disabled'    => true,
 				),
 				array(
 					'id'          => 'wav_attr_buttons_border_radius',
 					'details'     => esc_html__( 'Border Radius. Note: For % put minus sign (-) before the value. Example: -50', WAV_TEXTDOMAIN ),
 					'placeholder' => esc_html__( '5', WAV_TEXTDOMAIN ),
 					'type'        => 'number',
+					'disabled'    => true,
 				),
 				array(
-					'id'      => 'wav_attr_buttons_border_color',
-					'details' => esc_html__( 'Border Color', WAV_TEXTDOMAIN ),
-					'type'    => 'colorpicker',
+					'id'       => 'wav_attr_buttons_border_color',
+					'details'  => esc_html__( 'Border Color', WAV_TEXTDOMAIN ),
+					'type'     => 'colorpicker',
+					'disabled' => true,
 				),
 
 
