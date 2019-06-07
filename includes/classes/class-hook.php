@@ -16,27 +16,82 @@ class WAV_Hooks {
 	 */
 	function __construct() {
 
-        add_action( 'admin_init', array( $this, 'add_attribute_taxonomy_fields' ) );
-	    add_action( 'admin_notices', array( $this, 'plugin_dependency_check' ), 10 );
+		add_action( 'admin_init', array( $this, 'add_attribute_taxonomy_fields' ) );
+		add_action( 'admin_notices', array( $this, 'plugin_dependency_check' ), 10 );
 		add_filter( 'product_attributes_type_selector', array( $this, 'add_product_attribues_types' ), 10, 1 );
 		add_action( 'woocommerce_product_option_terms', array( $this, 'product_option_terms' ), 10, 2 );
-		add_filter( 'woocommerce_dropdown_variation_attribute_options_html', array( $this, 'attribute_options_html' ), 10, 2 );
+		add_filter( 'woocommerce_dropdown_variation_attribute_options_html', array(
+			$this,
+			'attribute_options_html'
+		), 10, 2 );
 		add_action( 'wp_footer', array( $this, 'dynamic_styles_content' ) );
-        add_filter( 'woocommerce_loop_add_to_cart_link', array( $this, 'loop_add_to_cart_link' ), 10, 2 );
+		add_filter( 'woocommerce_loop_add_to_cart_link', array( $this, 'loop_add_to_cart_link' ), 10, 2 );
 
-		add_filter( 'woocommerce_admin_meta_boxes_prepare_attribute', array( $this, 'save_attribute_meta_box' ), 10, 3 );
+		add_filter( 'woocommerce_admin_meta_boxes_prepare_attribute', array(
+			$this,
+			'save_attribute_meta_box'
+		), 10, 3 );
 		add_action( 'woocommerce_after_product_attribute_settings', array( $this, 'product_attribute_meta' ), 10, 2 );
 
-		if( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce' ) ) {
 			add_filter( 'activated_plugin', array( $this, 'plugin_activation' ), 10, 1 );
 			add_filter( 'plugin_action_links_' . WAV_PLUGIN_FILE, array( $this, 'add_plugin_actions' ), 10, 1 );
 		}
+
+		add_filter( 'plugin_row_meta', array( $this, 'add_quick_links' ), 10, 2 );
+		add_filter( 'plugin_action_links_' . WAV_PLUGIN_FILE, array( $this, 'add_quick_action_links' ), 10, 1 );
+	}
+
+	function add_quick_action_links( $links ) {
+
+		$action_links = array(
+			'responses' => sprintf( __( '<a href="%s">View Responses</a>', WAV_TEXTDOMAIN ), admin_url( 'admin.php?page=cf7-responses' ) ),
+			'export'    => sprintf( __( '<a href="%s">Export</a>', WAV_TEXTDOMAIN ), admin_url( 'admin.php?page=cf7-responses&tab=export' ) ),
+		);
+
+		return array_merge( $action_links, $links );
 	}
 
 
 	/**
-     * Product Attribute Meta
+     * Add quick links to the plugin list page
      *
+	 * @param $links
+	 * @param $file
+	 *
+	 * @return array
+	 */
+	function add_quick_links( $links, $file ) {
+
+		if ( WAV_PLUGIN_FILE === $file ) {
+
+			$row_meta = array(
+				'demo' => sprintf( '<a class="quick-link-demo" href="%s">%s</a>',
+					esc_url( '//demo.pluginbazar.com/woocommerce-advanced-variation/' ),
+					esc_html__( 'Try Demo', WAV_TEXTDOMAIN )
+				),
+
+				'support' => sprintf( '<a class="quick-link-support" href="%s">%s</a>',
+					esc_url( '//pluginbazar.com/forums/forum/woocommerce-advanced-variation/' ),
+					esc_html__( 'Problem? Ask Direct Support', WAV_TEXTDOMAIN )
+				),
+
+				'pro' => sprintf( '<a class="quick-link-pro" href="%s">%s</a>',
+					esc_url( '//demo.pluginbazar.com/woocommerce-advanced-variation/' ),
+					esc_html__( 'Get Pro', WAV_TEXTDOMAIN )
+				),
+			);
+
+			return array_merge( $links, $row_meta );
+		}
+
+		return (array) $links;
+	}
+
+
+	/**
+	 * Product Attribute Meta
+	 *
 	 * @param WC_Product_Attribute $attribute
 	 * @param $i
 	 */
@@ -44,10 +99,11 @@ class WAV_Hooks {
 
 		if ( $attribute->is_taxonomy() ) {
 
-		    printf( '<tr><td colspan="2"><p class="wav-notice wav-notice-info">%s <a href="%s">%s</a></p></td></tr>',
-                esc_html__( 'Please manage attributes from global scope.', WAV_TEXTDOMAIN ),
-                esc_url( admin_url( 'edit.php?post_type=product&page=product_attributes' ) ),
-                esc_html__( 'Update Attributes', WAV_TEXTDOMAIN ) );
+			printf( '<tr><td colspan="2"><p class="wav-notice wav-notice-info">%s <a href="%s">%s</a></p></td></tr>',
+				esc_html__( 'Please manage attributes from global scope.', WAV_TEXTDOMAIN ),
+				esc_url( admin_url( 'edit.php?post_type=product&page=product_attributes' ) ),
+				esc_html__( 'Update Attributes', WAV_TEXTDOMAIN ) );
+
 			return;
 		}
 
@@ -70,7 +126,7 @@ class WAV_Hooks {
 		$attribute_options_val = isset( $data['attribute_options_val'][ $i ] ) ? $data['attribute_options_val'][ $i ] : array();
 
 		if ( ! empty( $attribute_type ) ) {
-			$wav_product_attributes[ $attribute_names ][ $i ]['type'] = $attribute_type;
+			$wav_product_attributes[ $attribute_names ][ $i ]['type']  = $attribute_type;
 			$wav_product_attributes[ $attribute_names ][ $i ]['value'] = $attribute_options_val;
 		}
 
@@ -122,7 +178,7 @@ class WAV_Hooks {
 		$add_to_cart_text = preg_replace( '/href="[^"]*"/', '', $add_to_cart_text );
 
 		return str_replace( array( '<a' ), array( '<a href="#wav-popup" data-effect="mfp-zoom-in"' ), $add_to_cart_text );
-    }
+	}
 
 
 	/**
@@ -316,9 +372,9 @@ class WAV_Hooks {
 	 */
 	function add_attribute_taxonomy_fields() {
 
-	    if( ! class_exists( 'WooCommerce' ) ) {
-	        return;
-        }
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
 
 		foreach ( wc_get_attribute_taxonomies() as $attribute ) {
 
@@ -373,27 +429,26 @@ class WAV_Hooks {
 	}
 
 
-
 	function plugin_dependency_check() {
 
-	    // Check WooCommerce
+		// Check WooCommerce
 
-		if ( ! class_exists('WooCommerce' ) ) {
+		if ( ! class_exists( 'WooCommerce' ) ) {
 
 			$error_message = sprintf( '<strong>%s</strong> %s <a href="%s">%s</a>',
-                esc_html__( 'WooCommerce', WAV_TEXTDOMAIN ),
-                esc_html__( 'Plugin is missing! WooCommerce Advanced Variation Swatches will be deactivated soon.', WAV_TEXTDOMAIN ),
-                esc_url( '//wordpress.org/plugins/woocommerce/' ),
-                esc_html__( 'Get WooCommerce', WAV_TEXTDOMAIN )
-            );
+				esc_html__( 'WooCommerce', WAV_TEXTDOMAIN ),
+				esc_html__( 'Plugin is missing! WooCommerce Advanced Variation Swatches will be deactivated soon.', WAV_TEXTDOMAIN ),
+				esc_url( '//wordpress.org/plugins/woocommerce/' ),
+				esc_html__( 'Get WooCommerce', WAV_TEXTDOMAIN )
+			);
 
-			printf('<div class="notice notice-error is-dismissible"><p>%s</p></div>', $error_message );
+			printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', $error_message );
 
 			deactivate_plugins( WAV_PLUGIN_FILE );
 
 			return;
 		}
-    }
+	}
 }
 
 new WAV_Hooks();

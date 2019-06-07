@@ -1,4 +1,4 @@
-/*
+¬/*
 * @Author 		Pluginbazar
 * Copyright: 	2015 Pluginbazar
 */
@@ -83,6 +83,21 @@
 
 .wc-metaboxes-wrapper .woocommerce_attribute_data .wps-field > label {
     font-weight: 600;
+}
+
+.wp-list-table.plugins .quick-link-demo {
+    color: #b928d2;
+    font-weight: bold;
+}
+
+.wp-list-table.plugins .quick-link-support {
+    color: #d01454;
+    font-weight: bold;
+}
+
+.wp-list-table.plugins .quick-link-pro {
+    color: #108015;
+    font-weight: bold;
 }
 
 

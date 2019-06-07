@@ -139,11 +139,13 @@
 .wav_popup_container .wav_popup_payment .wav_payment_items {
     width: 100%;
     text-align: center;
+    display: inline-block;
 }
 
 .wav_popup_container .wav_popup_payment .wav_payment_items img.wav_payment_item {
     width: 50px;
     margin-right: 10px;
+    display: inherit;
 }
 
 .wav-variation-swatches {

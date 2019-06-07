@@ -2,13 +2,12 @@
 
     "use strict";
 
-
     /**
      * Reset Variation on Single Product Page
      */
     $(document).on('click', ".reset_variations", function () {
         $('.wav-variation-swatches').find('.wav-attribute-content').removeClass('attribute-selected');
-    })
+    });
 
 
     /**
@@ -24,7 +23,7 @@
         $(this).addClass('attribute-selected');
 
         $('.variations_form').trigger('check_variations');
-    })
+    });
 
 
     /**
@@ -61,7 +60,7 @@
                 }
             });
 
-    })
+    });
 
 
     /**
@@ -109,7 +108,7 @@
             });
 
 
-    })
+    });
 
 
     /**
@@ -143,19 +142,35 @@
             });
 
         return false;
-    })
+    });
 
 
     /**
      * Close Popup on click button
      */
     $(document).on('click', ".wav_variation_selection .wav_btn_close", function () {
+
         $('.wav_variation_selection').fadeOut();
         $('.wav_variation_selection .wav_popup_content').html("<span class='dashicons dashicons-admin-generic dashicons-spin'></span>");
         $('.wav_variation_selection .wav_btn_addtocart').attr('variation_id', 0);
-    })
+    });
 
-})(jQuery, window, document, wav_ajax );
+
+    /**
+     * Close Popup on click outside of Popup box
+     */
+    $(document).mouseup(function (e) {
+
+        let container = $('.wav_popup_container .wav_popup_box');
+
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            $('.wav_variation_selection').fadeOut();
+            $('.wav_variation_selection .wav_popup_content').html("<span class='dashicons dashicons-admin-generic dashicons-spin'></span>");
+            $('.wav_variation_selection .wav_btn_addtocart').attr('variation_id', 0);
+        }
+    });
+
+})(jQuery, window, document, wav_ajax);
 
 
 
