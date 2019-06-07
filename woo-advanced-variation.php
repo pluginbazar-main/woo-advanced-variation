@@ -73,6 +73,7 @@ class WooCommerceAdvancedVariation {
 		define( 'WAV_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 		define( 'WAV_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 		define( 'WAV_TEXTDOMAIN', 'woo-advanced-variation' );
+		define( 'WAV_TYPE', 'free' );
 	}
 
 
