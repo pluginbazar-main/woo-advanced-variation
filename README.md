@@ -21,7 +21,7 @@ WooCommerce Advanced Variation Swatches plugin allows to display WooCommerce att
 
     https://demo.pluginbazar.com/woocommerce-advanced-variation/
     
-	Username: wav
+	Username: vswoo
 	Password: pluginbazar
 
 

@@ -3,16 +3,16 @@
 * Copyright: 	2015 Pluginbazar
 */
 
-.wav-notice {
+.vswoo-notice {
     padding: 12px 10px;
     border-radius: 3px;
     border: 1px solid #c3c3c3;
 }
 
-.wav-notice a,
-.wav-notice a:focus,
-.wav-notice a:visited,
-.wav-notice a:active {
+.vswoo-notice a,
+.vswoo-notice a:focus,
+.vswoo-notice a:visited,
+.vswoo-notice a:active {
     border: 1px solid;
     border-radius: 3px;
     padding: 3px 8px;
@@ -23,12 +23,12 @@
     outline: none;
 }
 
-.wav-notice.wav-notice-warning {
+.vswoo-notice.vswoo-notice-warning {
     background: #ffc1072e;
     border-color: #ffc1072e;
 }
 
-.wav-notice.wav-notice-info {
+.vswoo-notice.vswoo-notice-info {
     background: #03a9f42e;
     border-color: #03a9f42e;
 }
@@ -41,35 +41,35 @@
 }
 
 
-.wav-col-content .wav-attribute-content {
+.vswoo-col-content .vswoo-attribute-content {
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.3s;
 }
 
-.wav-attribute-content.type-colors {
+.vswoo-attribute-content.type-colors {
     width: 28px;
     height: 28px;
 }
 
-.wav-attribute-content.type-buttons {
+.vswoo-attribute-content.type-buttons {
     border: 1px solid #4a4a4a;
     text-align: center;
     padding: 5px 15px;
 }
 
-.wav-attribute-content.type-buttons:hover {
+.vswoo-attribute-content.type-buttons:hover {
     background: #4a4a4a;
     border: 1px solid #4a4a4a;
     color: #fff;
 }
 
-.wav-attribute-content.type-images {
+.vswoo-attribute-content.type-images {
     width: 40px;
     height: 40px;
 }
 
-.wav-attribute-content.type-images img{
+.vswoo-attribute-content.type-images img{
     width: 100%;
 }
 

@@ -11,11 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 $pb_settings            = new PB_Settings();
 $product_id             = empty( $post_id = get_the_ID() ) ? absint( wp_unslash( $_POST['post_id'] ) ) : $post_id;
 $attribute_taxonomy     = $attribute->get_taxonomy_object();
-$wav_product_attributes = get_post_meta( $product_id, 'wav_product_attributes', true );
-$wav_product_attributes = empty( $wav_product_attributes ) ? array() : $wav_product_attributes;
+$vswoo_product_attributes = get_post_meta( $product_id, 'vswoo_product_attributes', true );
+$vswoo_product_attributes = empty( $vswoo_product_attributes ) ? array() : $vswoo_product_attributes;
 $_attribute_name        = sanitize_title( $attribute->get_name() );
-$attribute_type         = isset( $wav_product_attributes[ $_attribute_name ][ $i ]['type'] ) ? $wav_product_attributes[ $_attribute_name ][ $i ]['type'] : '';
-$attribute_options_val  = isset( $wav_product_attributes[ $_attribute_name ][ $i ]['value'] ) ? $wav_product_attributes[ $_attribute_name ][ $i ]['value'] : '';
+$attribute_type         = isset( $vswoo_product_attributes[ $_attribute_name ][ $i ]['type'] ) ? $vswoo_product_attributes[ $_attribute_name ][ $i ]['type'] : '';
+$attribute_options_val  = isset( $vswoo_product_attributes[ $_attribute_name ][ $i ]['value'] ) ? $vswoo_product_attributes[ $_attribute_name ][ $i ]['value'] : '';
 $attribute_options_val  = empty( $attribute_options_val ) ? array() : $attribute_options_val;
 $attribute_val_options  = array();
 
@@ -26,8 +26,8 @@ foreach ( $attribute->get_options() as $option ) {
 
 	$attribute_val_options[] = array(
 		'id'    => "attribute_options_val[$i][$option]",
-		'title' => sprintf( '%s: %s', wav_get_attribute_field_label( $attribute_type ), $option ),
-		'type'  => wav_get_attribute_field_type( $attribute_type ),
+		'title' => sprintf( '%s: %s', vswoo_get_attribute_field_label( $attribute_type ), $option ),
+		'type'  => vswoo_get_attribute_field_type( $attribute_type ),
 		'value' => $value,
 	);
 }
@@ -37,7 +37,7 @@ foreach ( $attribute->get_options() as $option ) {
 
 <tr>
     <td colspan="2">
-        <p class="wav-notice wav-notice-warning"><?php esc_html_e( 'You may need to update product/attributes to apply changes', WAV_TEXTDOMAIN ); ?></p>
+        <p class="vswoo-notice vswoo-notice-warning"><?php esc_html_e( 'You may need to update product/attributes to apply changes', VSWOO_TEXTDOMAIN ); ?></p>
     </td>
 </tr>
 

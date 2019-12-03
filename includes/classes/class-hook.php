@@ -8,11 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }  // if direct access
 
-class WAV_Hooks {
+class VSWOO_Hooks {
 
 
 	/**
-	 * WAV_Hooks constructor.
+	 * VSWOO_Hooks constructor.
 	 */
 	function __construct() {
 
@@ -35,18 +35,18 @@ class WAV_Hooks {
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			add_filter( 'activated_plugin', array( $this, 'plugin_activation' ), 10, 1 );
-			add_filter( 'plugin_action_links_' . WAV_PLUGIN_FILE, array( $this, 'add_plugin_actions' ), 10, 1 );
+			add_filter( 'plugin_action_links_' . VSWOO_PLUGIN_FILE, array( $this, 'add_plugin_actions' ), 10, 1 );
 		}
 
 		add_filter( 'plugin_row_meta', array( $this, 'add_quick_links' ), 10, 2 );
-		add_filter( 'plugin_action_links_' . WAV_PLUGIN_FILE, array( $this, 'add_quick_action_links' ), 10, 1 );
+		add_filter( 'plugin_action_links_' . VSWOO_PLUGIN_FILE, array( $this, 'add_quick_action_links' ), 10, 1 );
 	}
 
 	function add_quick_action_links( $links ) {
 
 		$action_links = array(
-			'responses' => sprintf( __( '<a href="%s">View Responses</a>', WAV_TEXTDOMAIN ), admin_url( 'admin.php?page=cf7-responses' ) ),
-			'export'    => sprintf( __( '<a href="%s">Export</a>', WAV_TEXTDOMAIN ), admin_url( 'admin.php?page=cf7-responses&tab=export' ) ),
+			'responses' => sprintf( __( '<a href="%s">View Responses</a>', VSWOO_TEXTDOMAIN ), admin_url( 'admin.php?page=cf7-responses' ) ),
+			'export'    => sprintf( __( '<a href="%s">Export</a>', VSWOO_TEXTDOMAIN ), admin_url( 'admin.php?page=cf7-responses&tab=export' ) ),
 		);
 
 		return array_merge( $action_links, $links );
@@ -63,22 +63,22 @@ class WAV_Hooks {
 	 */
 	function add_quick_links( $links, $file ) {
 
-		if ( WAV_PLUGIN_FILE === $file ) {
+		if ( VSWOO_PLUGIN_FILE === $file ) {
 
 			$row_meta = array(
 				'demo' => sprintf( '<a class="quick-link-demo" href="%s">%s</a>',
 					esc_url( '//demo.pluginbazar.com/woocommerce-advanced-variation/' ),
-					esc_html__( 'Try Demo', WAV_TEXTDOMAIN )
+					esc_html__( 'Try Demo', VSWOO_TEXTDOMAIN )
 				),
 
 				'support' => sprintf( '<a class="quick-link-support" href="%s">%s</a>',
 					esc_url( '//pluginbazar.com/forums/forum/woocommerce-advanced-variation/' ),
-					esc_html__( 'Problem? Ask Direct Support', WAV_TEXTDOMAIN )
+					esc_html__( 'Problem? Ask Direct Support', VSWOO_TEXTDOMAIN )
 				),
 
 				'pro' => sprintf( '<a class="quick-link-pro" href="%s">%s</a>',
 					esc_url( '//demo.pluginbazar.com/woocommerce-advanced-variation/' ),
-					esc_html__( 'Get Pro', WAV_TEXTDOMAIN )
+					esc_html__( 'Get Pro', VSWOO_TEXTDOMAIN )
 				),
 			);
 
@@ -99,15 +99,15 @@ class WAV_Hooks {
 
 		if ( $attribute->is_taxonomy() ) {
 
-			printf( '<tr><td colspan="2"><p class="wav-notice wav-notice-info">%s <a href="%s">%s</a></p></td></tr>',
-				esc_html__( 'Please manage attributes from global scope.', WAV_TEXTDOMAIN ),
+			printf( '<tr><td colspan="2"><p class="vswoo-notice vswoo-notice-info">%s <a href="%s">%s</a></p></td></tr>',
+				esc_html__( 'Please manage attributes from global scope.', VSWOO_TEXTDOMAIN ),
 				esc_url( admin_url( 'edit.php?post_type=product&page=product_attributes' ) ),
-				esc_html__( 'Update Attributes', WAV_TEXTDOMAIN ) );
+				esc_html__( 'Update Attributes', VSWOO_TEXTDOMAIN ) );
 
 			return;
 		}
 
-		include WAV_PLUGIN_DIR . 'templates/product-attribute-meta.php';
+		include VSWOO_PLUGIN_DIR . 'templates/product-attribute-meta.php';
 	}
 
 
@@ -120,17 +120,17 @@ class WAV_Hooks {
 		$attribute_type         = isset( $data['attribute_type'][ $i ] ) ? sanitize_title( $data['attribute_type'][ $i ] ) : '';
 		$attribute_names        = isset( $data['attribute_names'][ $i ] ) ? sanitize_title( $data['attribute_names'][ $i ] ) : '';
 		$product_id             = isset( $data['post_ID'] ) && ! empty( $post_id = $data['post_ID'] ) ? $post_id : sanitize_text_field( $_POST['post_id'] );
-		$wav_product_attributes = get_post_meta( $product_id, 'wav_product_attributes', true );
-		$wav_product_attributes = empty( $wav_product_attributes ) ? array() : $wav_product_attributes;
+		$vswoo_product_attributes = get_post_meta( $product_id, 'vswoo_product_attributes', true );
+		$vswoo_product_attributes = empty( $vswoo_product_attributes ) ? array() : $vswoo_product_attributes;
 
 		$attribute_options_val = isset( $data['attribute_options_val'][ $i ] ) ? $data['attribute_options_val'][ $i ] : array();
 
 		if ( ! empty( $attribute_type ) ) {
-			$wav_product_attributes[ $attribute_names ][ $i ]['type']  = $attribute_type;
-			$wav_product_attributes[ $attribute_names ][ $i ]['value'] = $attribute_options_val;
+			$vswoo_product_attributes[ $attribute_names ][ $i ]['type']  = $attribute_type;
+			$vswoo_product_attributes[ $attribute_names ][ $i ]['value'] = $attribute_options_val;
 		}
 
-		update_post_meta( $product_id, 'wav_product_attributes', $wav_product_attributes );
+		update_post_meta( $product_id, 'vswoo_product_attributes', $vswoo_product_attributes );
 
 		return $attribute;
 	}
@@ -146,7 +146,7 @@ class WAV_Hooks {
 	function add_plugin_actions( $links ) {
 
 		$action_links = array(
-			'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=advanced-variation' ), esc_html__( 'Settings', WAV_TEXTDOMAIN ) ),
+			'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=advanced-variation' ), esc_html__( 'Settings', VSWOO_TEXTDOMAIN ) ),
 		);
 
 		return array_merge( $action_links, $links );
@@ -160,7 +160,7 @@ class WAV_Hooks {
 	 */
 	function plugin_activation( $plugin ) {
 
-		if ( $plugin == WAV_PLUGIN_FILE ) {
+		if ( $plugin == VSWOO_PLUGIN_FILE ) {
 			exit( wp_redirect( admin_url( 'admin.php?page=advanced-variation' ) ) );
 		}
 	}
@@ -177,7 +177,7 @@ class WAV_Hooks {
 
 		$add_to_cart_text = preg_replace( '/href="[^"]*"/', '', $add_to_cart_text );
 
-		return str_replace( array( '<a' ), array( '<a href="#wav-popup" data-effect="mfp-zoom-in"' ), $add_to_cart_text );
+		return str_replace( array( '<a' ), array( '<a href="#vswoo-popup" data-effect="mfp-zoom-in"' ), $add_to_cart_text );
 	}
 
 
@@ -186,7 +186,7 @@ class WAV_Hooks {
 	 */
 	function dynamic_styles_content() {
 
-		wav_get_template( 'dynamic-content.php' );
+		vswoo_get_template( 'dynamic-content.php' );
 	}
 
 
@@ -202,7 +202,7 @@ class WAV_Hooks {
 
 		ob_start();
 
-		wav_get_template( 'single-variations.php', $args );
+		vswoo_get_template( 'single-variations.php', $args );
 
 		return ob_get_clean();
 	}
@@ -230,7 +230,7 @@ class WAV_Hooks {
 
 			?>
             <select multiple="multiple"
-                    data-placeholder="<?php esc_attr_e( 'Select terms', WAV_TEXTDOMAIN ); ?>"
+                    data-placeholder="<?php esc_attr_e( 'Select terms', VSWOO_TEXTDOMAIN ); ?>"
                     class="multiselect attribute_values wc-enhanced-select"
                     name="attribute_values[<?php echo $i; ?>][]">
 				<?php
@@ -243,8 +243,8 @@ class WAV_Hooks {
 				?>
             </select>
 
-            <button class="button plus select_all_attributes"><?php esc_html_e( 'Select all', WAV_TEXTDOMAIN ); ?></button>
-            <button class="button minus select_no_attributes"><?php esc_html_e( 'Select none', WAV_TEXTDOMAIN ); ?></button>
+            <button class="button plus select_all_attributes"><?php esc_html_e( 'Select all', VSWOO_TEXTDOMAIN ); ?></button>
+            <button class="button minus select_no_attributes"><?php esc_html_e( 'Select none', VSWOO_TEXTDOMAIN ); ?></button>
 
 			<?php
 		}
@@ -260,11 +260,11 @@ class WAV_Hooks {
 	 */
 	function add_taxonomy_columns_content( $content, $column_name, $term_id ) {
 
-		if ( $column_name != 'wav_attr_col' ) {
+		if ( $column_name != 'vswoo_attr_col' ) {
 			return;
 		}
 
-		printf( '<div class="wav-col-content">%s</div>', wav_get_attribute_content_by_term_id( $term_id ) );
+		printf( '<div class="vswoo-col-content">%s</div>', vswoo_get_attribute_content_by_term_id( $term_id ) );
 	}
 
 
@@ -277,14 +277,14 @@ class WAV_Hooks {
 	 */
 	function add_taxonomy_columns( $columns ) {
 
-		$column_label = wav_get_attribute_col_label();
+		$column_label = vswoo_get_attribute_col_label();
 
 		foreach ( $columns as $col_key => $label ) {
 
 			$__columns[ $col_key ] = $label;
 
 			if ( $col_key == 'description' ) {
-				$__columns['wav_attr_col'] = $column_label;
+				$__columns['vswoo_attr_col'] = $column_label;
 			}
 		}
 
@@ -307,7 +307,7 @@ class WAV_Hooks {
 
 		$attribute_id = wc_attribute_taxonomy_id_by_name( $taxonomy );
 		$attribute    = wc_get_attribute( $attribute_id );
-		$field_id     = wav_get_attribute_field_id( $attribute->type );
+		$field_id     = vswoo_get_attribute_field_id( $attribute->type );
 		$field_val    = isset( $_POST[ $field_id ] ) ? sanitize_text_field( $_POST[ $field_id ] ) : '';
 
 		update_term_meta( $term_id, $field_id, $field_val );
@@ -341,14 +341,14 @@ class WAV_Hooks {
 
 
 		if ( isset( $term->term_id ) ) {
-			$field_id    = wav_get_attribute_field_id( $attr->type );
+			$field_id    = vswoo_get_attribute_field_id( $attr->type );
 			$field_value = get_term_meta( $term->term_id, $field_id, true );
 		}
 
 		$options = array(
 			array(
-				'id'    => wav_get_attribute_field_id( $attr->type ),
-				'type'  => wav_get_attribute_field_type( $attr->type ),
+				'id'    => vswoo_get_attribute_field_id( $attr->type ),
+				'type'  => vswoo_get_attribute_field_type( $attr->type ),
 				'value' => $field_value,
 			)
 		);
@@ -356,11 +356,11 @@ class WAV_Hooks {
 		?>
         <tr class="form-field form-required">
             <th scope="row" valign="top">
-                <label for="attribute_type"><?php echo esc_html( wav_get_attribute_field_label( $attr->type ) ); ?></label>
+                <label for="attribute_type"><?php echo esc_html( vswoo_get_attribute_field_label( $attr->type ) ); ?></label>
             </th>
             <td>
 				<?php $pb_settings->generate_fields( array( array( 'options' => $options ) ), false, false ); ?>
-                <p class="description"><?php echo esc_html( wav_get_attribute_field_description( $attr->type ) ); ?></p>
+                <p class="description"><?php echo esc_html( vswoo_get_attribute_field_description( $attr->type ) ); ?></p>
             </td>
         </tr>
 		<?php
@@ -421,9 +421,9 @@ class WAV_Hooks {
 	 */
 	function add_product_attribues_types( $types ) {
 
-		$types['type_colors']  = esc_html__( 'Colors', WAV_TEXTDOMAIN );
-		$types['type_images']  = esc_html__( 'Images', WAV_TEXTDOMAIN );
-		$types['type_buttons'] = esc_html__( 'Buttons', WAV_TEXTDOMAIN );
+		$types['type_colors']  = esc_html__( 'Colors', VSWOO_TEXTDOMAIN );
+		$types['type_images']  = esc_html__( 'Images', VSWOO_TEXTDOMAIN );
+		$types['type_buttons'] = esc_html__( 'Buttons', VSWOO_TEXTDOMAIN );
 
 		return $types;
 	}
@@ -436,19 +436,19 @@ class WAV_Hooks {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 
 			$error_message = sprintf( '<strong>%s</strong> %s <a href="%s">%s</a>',
-				esc_html__( 'WooCommerce', WAV_TEXTDOMAIN ),
-				esc_html__( 'Plugin is missing! WooCommerce Advanced Variation Swatches will be deactivated soon.', WAV_TEXTDOMAIN ),
+				esc_html__( 'WooCommerce', VSWOO_TEXTDOMAIN ),
+				esc_html__( 'Plugin is missing! WooCommerce Advanced Variation Swatches will be deactivated soon.', VSWOO_TEXTDOMAIN ),
 				esc_url( '//wordpress.org/plugins/woocommerce/' ),
-				esc_html__( 'Get WooCommerce', WAV_TEXTDOMAIN )
+				esc_html__( 'Get WooCommerce', VSWOO_TEXTDOMAIN )
 			);
 
 			printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', $error_message );
 
-			deactivate_plugins( WAV_PLUGIN_FILE );
+			deactivate_plugins( VSWOO_PLUGIN_FILE );
 
 			return;
 		}
 	}
 }
 
-new WAV_Hooks();
+new VSWOO_Hooks();
