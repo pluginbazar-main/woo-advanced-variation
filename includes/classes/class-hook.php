@@ -54,8 +54,8 @@ class VSWOO_Hooks {
 
 
 	/**
-     * Add quick links to the plugin list page
-     *
+	 * Add quick links to the plugin list page
+	 *
 	 * @param $links
 	 * @param $file
 	 *
@@ -66,18 +66,16 @@ class VSWOO_Hooks {
 		if ( VSWOO_PLUGIN_FILE === $file ) {
 
 			$row_meta = array(
-				'demo' => sprintf( '<a class="quick-link-demo" href="%s">%s</a>',
-					esc_url( '//demo.pluginbazar.com/woocommerce-advanced-variation/' ),
+				'demo'    => sprintf( '<a class="quick-link-demo" href="%s">%s</a>',
+					esc_url_raw( 'https://demo.pluginbazar.com/variation-swatches/' ),
 					esc_html__( 'Try Demo', VSWOO_TEXTDOMAIN )
 				),
-
 				'support' => sprintf( '<a class="quick-link-support" href="%s">%s</a>',
-					esc_url( '//pluginbazar.com/forums/forum/woocommerce-advanced-variation/' ),
+					esc_url_raw( 'https://help.pluginbazar.com/forums/forum/variation-swatches-for-woocommerce/' ),
 					esc_html__( 'Problem? Ask Direct Support', VSWOO_TEXTDOMAIN )
 				),
-
-				'pro' => sprintf( '<a class="quick-link-pro" href="%s">%s</a>',
-					esc_url( '//demo.pluginbazar.com/woocommerce-advanced-variation/' ),
+				'pro'     => sprintf( '<a class="quick-link-pro" href="%s">%s</a>',
+					esc_url_raw( 'https://codecanyon.net/item/variation-swatches-for-woocommerce/25116319' ),
 					esc_html__( 'Get Pro', VSWOO_TEXTDOMAIN )
 				),
 			);
@@ -117,9 +115,9 @@ class VSWOO_Hooks {
 			return $attribute;
 		}
 
-		$attribute_type         = isset( $data['attribute_type'][ $i ] ) ? sanitize_title( $data['attribute_type'][ $i ] ) : '';
-		$attribute_names        = isset( $data['attribute_names'][ $i ] ) ? sanitize_title( $data['attribute_names'][ $i ] ) : '';
-		$product_id             = isset( $data['post_ID'] ) && ! empty( $post_id = $data['post_ID'] ) ? $post_id : sanitize_text_field( $_POST['post_id'] );
+		$attribute_type           = isset( $data['attribute_type'][ $i ] ) ? sanitize_title( $data['attribute_type'][ $i ] ) : '';
+		$attribute_names          = isset( $data['attribute_names'][ $i ] ) ? sanitize_title( $data['attribute_names'][ $i ] ) : '';
+		$product_id               = isset( $data['post_ID'] ) && ! empty( $post_id = $data['post_ID'] ) ? $post_id : sanitize_text_field( $_POST['post_id'] );
 		$vswoo_product_attributes = get_post_meta( $product_id, 'vswoo_product_attributes', true );
 		$vswoo_product_attributes = empty( $vswoo_product_attributes ) ? array() : $vswoo_product_attributes;
 

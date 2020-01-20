@@ -1,4 +1,4 @@
-=== WooCommerce Advanced Variation Swatches ===
+=== Variation Swatches for WooCommerce - Lite ===
 	Contributors: jaedm97,pluginbazar
 	Donate link: https://www.pluginbazar.net/product/gift-a-coffee/
 	Tags: product attributes, variation swatches, product color, product size, woocommerce attributes, woocommerce variation, advanced swatches, woocommerce
@@ -17,10 +17,10 @@ Variation Swatches is an extension for WooCommerce Plugin. It will provide you a
 Variation attributes can be different types like – Images, Colors, Buttons where WooCommerce provide only a simple type.
 
 [TRY DEMO WITH ADMIN DASHBOARD](https://demo.pluginbazar.com/variation-swatches/)
+
+<img src="https://pluginbazar.com/wp-content/uploads/2019/11/cyber-monday-off.png">
+
 [BUY PRO VERSION ONLY AT 19$](https://codecanyon.net/item/variation-swatches-for-woocommerce/25116319)
-
-[<img src="https://pluginbazar.com/wp-content/uploads/2019/11/cyber-monday-off.png">](https://codecanyon.net/item/variation-swatches-for-woocommerce/25116319)
-
 
 ##Features
 
